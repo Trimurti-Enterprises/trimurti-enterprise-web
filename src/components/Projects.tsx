@@ -9,22 +9,22 @@ const Projects = () => {
     {
       title: "Industrial Steel Structure Erection",
       description: "Complete structural erection for manufacturing facility using 100T crawler cranes",
-      image: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "/lovable-uploads/7c9a592a-27ec-4f4d-8eea-3c09e8c4c7bb.png"
     },
     {
-      title: "High-Rise Construction Support",
-      description: "Material handling and positioning for 30-story commercial complex",
-      image: "https://images.unsplash.com/photo-1469041797191-50ace28483c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      title: "Heavy Equipment Operations",
+      description: "Material handling and positioning using advanced pick and carry cranes",
+      image: "/lovable-uploads/582481b6-7488-47d8-ba5c-0d01d2bd2eaf.png"
     },
     {
       title: "Infrastructure Development",
       description: "Earth moving and excavation work for highway construction project",
-      image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "/lovable-uploads/36d1f002-692c-4286-80eb-add1f0b3b1bc.png"
     },
     {
-      title: "Power Plant Installation",
-      description: "Heavy machinery positioning for thermal power plant equipment",
-      image: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      title: "Construction Site Operations",
+      description: "Multi-equipment coordination for large-scale construction projects",
+      image: "/lovable-uploads/59f35e5b-3680-4091-a3f3-0f088e85526a.png"
     }
   ];
 

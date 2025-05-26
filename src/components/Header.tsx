@@ -38,9 +38,11 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center justify-between px-8 py-4">
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-gray-800">
-              Trimurti <span className="text-orange">Enterprises</span>
-            </div>
+            <img 
+              src="/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.png" 
+              alt="Trimurti Enterprises Logo" 
+              className="h-12 w-auto"
+            />
           </div>
           
           <div className="flex space-x-8">
@@ -80,8 +82,12 @@ const Header = () => {
             )}
           </button>
           
-          <div className="text-xl font-bold text-gray-800">
-            Trimurti <span className="text-orange">Enterprises</span>
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/14ad1b30-be2a-46cf-a903-83d66077d996.png" 
+              alt="Trimurti Enterprises" 
+              className="h-8 w-auto"
+            />
           </div>
           
           <div className="w-10" />
@@ -94,9 +100,11 @@ const Header = () => {
           <div className="fixed inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="fixed left-0 top-0 h-full w-80 bg-white shadow-xl transform animate-slide-in-left">
             <div className="p-6 border-b">
-              <div className="text-xl font-bold text-gray-800">
-                Trimurti <span className="text-orange">Enterprises</span>
-              </div>
+              <img 
+                src="/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.png" 
+                alt="Trimurti Enterprises Logo" 
+                className="h-10 w-auto"
+              />
             </div>
             <div className="p-6">
               <div className="space-y-4 mb-8">

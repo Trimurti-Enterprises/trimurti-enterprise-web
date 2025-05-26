@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { X } from 'lucide-react';
 
 const Fleet = () => {
   const [selectedEquipment, setSelectedEquipment] = useState<any>(null);
@@ -10,38 +9,38 @@ const Fleet = () => {
     {
       name: "Pick and Carry Crane",
       capacity: "15T, 17T, 23T",
-      description: "Perfect for material handling and positioning in confined spaces",
-      image: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      description: "Perfect for material handling and positioning in confined spaces with excellent mobility and precision",
+      image: "/lovable-uploads/582481b6-7488-47d8-ba5c-0d01d2bd2eaf.png"
     },
     {
       name: "Tyre Mounted Telescopic Crane",
       capacity: "50T, 70T, 80T, 100T",
-      description: "Ideal for high-reach construction and installation work",
-      image: "https://images.unsplash.com/photo-1469041797191-50ace28483c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      description: "Ideal for high-reach construction and installation work with superior lifting capabilities",
+      image: "/lovable-uploads/7c9a592a-27ec-4f4d-8eea-3c09e8c4c7bb.png"
     },
     {
       name: "Hydraulic Crawler Crane",
       capacity: "50T, 70T, 100T, 150T, 250T",
-      description: "Heavy-duty lifting for large-scale construction projects",
-      image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      description: "Heavy-duty lifting for large-scale construction projects with exceptional stability",
+      image: "/lovable-uploads/f2480aab-4988-4b4e-bd2f-91ae71f151dd.png"
     },
     {
       name: "Excavator",
       capacity: "20T (Tata 200) & 30T (L&T Komatsu PC300)",
-      description: "Efficient earth moving and excavation equipment",
-      image: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      description: "Efficient earth moving and excavation equipment for diverse construction needs",
+      image: "/lovable-uploads/36d1f002-692c-4286-80eb-add1f0b3b1bc.png"
     },
     {
       name: "Back Hoe Loader",
       capacity: "JCB 3DX, 4DX",
-      description: "Versatile equipment for digging and loading operations",
-      image: "https://images.unsplash.com/photo-1469041797191-50ace28483c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      description: "Versatile equipment for digging and loading operations with reliable performance",
+      image: "/lovable-uploads/59f35e5b-3680-4091-a3f3-0f088e85526a.png"
     },
     {
       name: "Man Lift / Boom Lift",
       capacity: "80Ft, 120Ft, 135Ft, 150Ft (JLG)",
-      description: "Safe aerial access for maintenance and installation work",
-      image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      description: "Safe aerial access for maintenance and installation work at various heights",
+      image: "/lovable-uploads/f2480aab-4988-4b4e-bd2f-91ae71f151dd.png"
     }
   ];
 
