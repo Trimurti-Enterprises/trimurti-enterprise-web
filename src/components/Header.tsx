@@ -84,7 +84,7 @@ const Header = () => {
           
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/14ad1b30-be2a-46cf-a903-83d66077d996.png" 
+              src="/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.png" 
               alt="Trimurti Enterprises" 
               className="h-8 w-auto"
             />
