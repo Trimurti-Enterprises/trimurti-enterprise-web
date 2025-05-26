@@ -23,7 +23,7 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
-          Building Excellence with
+          <span className="text-blue">Building Excellence</span> with
           <span className="block text-orange mt-2">Premium Equipment</span>
         </h1>
         
