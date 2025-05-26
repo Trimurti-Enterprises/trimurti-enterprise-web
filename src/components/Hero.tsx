@@ -41,7 +41,7 @@ const Hero = () => {
           <Button 
             onClick={() => document.getElementById('fleet')?.scrollIntoView({ behavior: 'smooth' })}
             variant="outline"
-            className="border-2 border-white text-white hover:bg-white hover:text-gray-800 px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300"
+            className="border-2 border-blue text-blue hover:bg-blue hover:text-white px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300"
           >
             View Fleet
           </Button>
