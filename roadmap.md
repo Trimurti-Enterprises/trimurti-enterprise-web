@@ -1,0 +1,4 @@
+- [ ] Replace the public page with a focused business-site template editor.
+- [ ] Add brand, palette, layout, and section controls with a live preview.
+- [ ] Export selected content as a standalone lightweight HTML/CSS/JS file.
+- [ ] Verify the editor and export flow in the preview.
