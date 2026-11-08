@@ -109,6 +109,7 @@ The following describes the editor represented in the project today; it is not a
 - **Implemented in a limited form:** A fixed set of About, Projects, Equipment, and Contact choices, with editable text for the selected content.
 - **Implemented in a limited form:** The equipment presentation uses a fixed set of sample machines rather than a vendor-editable catalogue.
 - **Not yet represented by the current controls:** User-managed website pages and independently configurable, reusable sections within each page. The existing About, Projects, Equipment, and Contact choices behave more like top-level content destinations than general section blocks.
+- **Known verification issue:** The latest available typecheck reports an export-code error in `src/pages/Index.tsx`: `.filter()` is called on a `Set`. A successful typecheck and end-to-end export have not been verified. This README-only request does not include a code fix.
 - **Export limitation to verify:** The exporter attempts to embed available local images; any image that cannot be fetched may remain a path reference, so portability is not guaranteed for every asset.
 - **Contact limitation:** The exported form is client-side and prepares an email; it does not save enquiries to a database.
 
