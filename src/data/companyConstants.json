@@ -1,0 +1,150 @@
+{
+  "features": {
+    "hidePhoneNumber": false
+  },
+  "company": {
+    "name": "Trimurti Enterprises",
+    "legalName": "M/s. Trimurti Enterprises",
+    "shortName": "Trimurti",
+    "tagline": "Heavy Crane & Construction Machinery Rental",
+    "headline": "Heavy Equipment That Keeps Projects Moving.",
+    "subheadline": "Industrial cranes, earthmoving machinery, and expert site support ready for your next infrastructure or construction project across Maharashtra.",
+    "establishedYear": 2008,
+    "experienceYears": "15+",
+    "completedProjects": "500+",
+    "fleetUnits": "25+ Units",
+    "tpiCertifiedRate": "100%",
+    "supportAvailability": "24/7 Breakdown Dispatch",
+    "heroTagline": "Government & Private Infrastructure Rental Partner"
+  },
+  "contact": {
+    "primaryPhone": "+91 9372662707",
+    "primaryPhoneRaw": "+919372662707",
+    "secondaryPhone": "+91 9876543210",
+    "secondaryPhoneRaw": "+919876543210",
+    "whatsapp": "+91 9372662707",
+    "whatsappRaw": "919372662707",
+    "whatsappUrl": "https://wa.me/919372662707?text=Hello%20Trimurti%20Enterprises,%20I%20would%20like%20to%20inquire%20about%20crane%20and%20machinery%20rental.",
+    "email": "trimurtienterprises2806@gmail.com",
+    "hours": "Mon – Sat: 8:00 AM – 8:00 PM (Emergency Dispatch 24/7)",
+    "dispatchManager": "Fleet Operations & Dispatch Desk"
+  },
+  "address": {
+    "office": "C/232, Plot No. 514, Steel Chamber, Kalamboli, Navi Mumbai, Maharashtra 410218",
+    "yardLocations": [
+      "Kalamboli Steel Market Yard, Navi Mumbai",
+      "Panvel Heavy Equipment Yard, Maharashtra"
+    ],
+    "city": "Navi Mumbai",
+    "state": "Maharashtra",
+    "pincode": "410218",
+    "country": "India",
+    "gstin": "27AABCT1234F1Z8",
+    "pan": "AABCT1234F"
+  },
+  "branding": {
+    "logo": "/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.png",
+    "logoDark": "/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.png",
+    "favicon": "/favicon.ico"
+  },
+  "certifications": [
+    {
+      "title": "Form 11 / Third-Party Inspection (TPI)",
+      "desc": "All lifting gear, wire ropes, and load charts undergo bi-annual certified third-party testing."
+    },
+    {
+      "title": "Trained & Medical-Screened Operators",
+      "desc": "Operators hold valid heavy commercial licenses and complete rigorous site-safety protocol training."
+    },
+    {
+      "title": "Zero-Downtime Preventive Maintenance",
+      "desc": "Scheduled fluid, hydraulic, and filter replacements ensure reliable continuous site operations."
+    },
+    {
+      "title": "Comprehensive Insurance & Safety Signoffs",
+      "desc": "Transit insurance, contractor all-risk compatibility, and full equipment documentation provided."
+    }
+  ],
+  "clients": [
+    {
+      "id": "lt",
+      "name": "Larsen & Toubro (L&T)",
+      "variations": "L&T Construction, Larsen & Toubro",
+      "category": "EPC & Infrastructure",
+      "logo": "/logos/clients/landt-construction-logo.png",
+      "alt": "Larsen & Toubro Construction Logo",
+      "scope": "Metro rail girder lifting, bridge segment erection, highway interchanges"
+    },
+    {
+      "id": "jsw-steel",
+      "name": "JSW Steel Limited",
+      "variations": "JSW Steel",
+      "category": "Steel & Heavy Industry",
+      "logo": "/logos/clients/JSW_Steel_Logo.svg",
+      "alt": "JSW Steel Limited Logo",
+      "scope": "Blast furnace overhaul, heavy coil yard handling, mill shutdown support"
+    },
+    {
+      "id": "tata-projects",
+      "name": "Tata Projects",
+      "variations": "TATA Projects",
+      "category": "Urban & Industrial Infrastructure",
+      "logo": "/logos/clients/tata-proj-id5eNgXY43_logos.jpeg",
+      "alt": "Tata Projects Logo",
+      "scope": "Power plant equipment erection, transmission lines, metro stations"
+    },
+    {
+      "id": "bauer",
+      "name": "BAUER Group",
+      "variations": "Bauer Engineering, BAUER Group",
+      "category": "Special Foundation & Deep Piling",
+      "logo": "/logos/clients/bauer-group-logo-wide.svg",
+      "alt": "BAUER Group Logo",
+      "scope": "Hydraulic piling rig assembly, diaphragm wall cage lowering, geotechnical lifting"
+    },
+    {
+      "id": "shapoorji",
+      "name": "Shapoorji Pallonji",
+      "variations": "Shapoorji Pallonji & Co.",
+      "category": "Commercial & Residential EPC",
+      "logo": "/logos/clients/shapoorji-pallonji-icon_splogo_blue.svg",
+      "alt": "Shapoorji Pallonji Logo",
+      "scope": "Precast panel erection, high-rise structural placement, warehouse framing"
+    },
+    {
+      "id": "afcons",
+      "name": "Afcons Infrastructure",
+      "variations": "AFCONS Infra, Afcons Infrastructure",
+      "category": "Marine & Underground Transit",
+      "logo": "/logos/clients/Afcons-Logo-Rounded.png",
+      "alt": "Afcons Infrastructure Logo",
+      "scope": "Coastal road segments, marine jetty piling, heavy flyover pier caps"
+    },
+    {
+      "id": "jssl",
+      "name": "JSW Severfield Structures (JSSL)",
+      "variations": "JSSL Structures, JSSL Steel Structures",
+      "category": "Structural Steel Fabrication",
+      "logo": "/logos/clients/jssl-logo.png",
+      "alt": "JSW Severfield Structures Logo",
+      "scope": "Heavy structural steel truss installation, airport terminal framing"
+    },
+    {
+      "id": "reliance",
+      "name": "Reliance Industries",
+      "variations": "Reliance Infra, Reliance Industries",
+      "category": "Refineries & Petrochemicals",
+      "logo": "/logos/clients/Reliance-Industries-Ltd.-Logo-500x281.png",
+      "alt": "Reliance Industries Limited Logo",
+      "scope": "Refinery turnaround crane deployment, heavy heat exchanger replacements"
+    }
+  ],
+  "navigation": [
+    { "label": "Home", "id": "home" },
+    { "label": "About", "id": "about" },
+    { "label": "Fleet", "id": "fleet" },
+    { "label": "Projects", "id": "projects" },
+    { "label": "Clients", "id": "clients" },
+    { "label": "Contact", "id": "contact" }
+  ]
+}

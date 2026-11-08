@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { company, contact, address } from '@/data/companyConstants';
 import {
   Mail,
   Phone,
@@ -134,7 +135,7 @@ const Contact: React.FC<ContactProps> = ({ initialSelectedMachine }) => {
   };
 
   const handleWhatsAppFastTrack = () => {
-    const waUrl = `https://wa.me/919876543210?text=${getWhatsAppMessage()}`;
+    const waUrl = `https://wa.me/${contact.whatsappRaw}?text=${getWhatsAppMessage()}`;
     window.open(waUrl, '_blank');
   };
 
@@ -176,85 +177,9 @@ const Contact: React.FC<ContactProps> = ({ initialSelectedMachine }) => {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Direct Contact & Trust Badges */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-sm">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Dispatch & Fleet Yard</h3>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-orange/10 rounded-xl text-orange flex-shrink-0">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-sm">Direct Dispatch Numbers</h4>
-                    <a
-                      href="tel:+919876543210"
-                      className="text-lg font-bold text-gray-800 hover:text-orange block"
-                    >
-                      +91 98765 43210
-                    </a>
-                    <span className="text-xs text-gray-500">24/7 Breakdown Assistance Hotline</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-blue/10 rounded-xl text-blue flex-shrink-0">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-sm">Official Commercial Email</h4>
-                    <a
-                      href="mailto:info@trimurtienterprises.com"
-                      className="text-base font-semibold text-gray-800 hover:text-blue block"
-                    >
-                      info@trimurtienterprises.com
-                    </a>
-                    <span className="text-xs text-gray-500">Quotes & Invoicing correspondence</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-green-50 rounded-xl text-green-700 flex-shrink-0">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-sm">Main Equipment Yard</h4>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      Plot 42, Heavy Industrial Area, Turbhe MIDC, Navi Mumbai, Maharashtra 400705
-                    </p>
-                    <span className="text-xs text-gray-500 font-medium">GSTIN: 27AABCT1234F1Z8</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-amber-50 rounded-xl text-amber-700 flex-shrink-0">
-                    <Clock className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-sm">Working Hours</h4>
-                    <p className="text-sm text-gray-600">Monday – Saturday: 8:00 AM – 8:00 PM</p>
-                    <p className="text-xs text-green-600 font-semibold">
-                      On-site emergency crew deployed 24/7
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Trust Callout */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <div className="flex items-center gap-3 text-xs text-gray-600">
-                  <ShieldCheck className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span>
-                    All machines deployed with certified test certificates, Form 11, and third-party inspection (TPI).
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Interactive Multi-Step Quote Wizard */}
-          <div className="lg:col-span-7">
+          {/* Left Column: Interactive Multi-Step Quote Wizard */}
+          <div id="quote-wizard" className="lg:col-span-7">
+          
             <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 sm:p-10 shadow-lg relative">
               {!submitted ? (
                 <>
@@ -532,7 +457,7 @@ const Contact: React.FC<ContactProps> = ({ initialSelectedMachine }) => {
                           onClick={handleNext}
                           className="bg-orange hover:bg-orange-hover text-white font-bold gap-2"
                         >
-                          Continue to Step {step + 1} <ArrowRight className="w-4 h-4" />
+                          Continue <ArrowRight className="w-4 h-4" />
                         </Button>
                       ) : (
                         <div className="flex gap-2">
@@ -568,12 +493,21 @@ const Contact: React.FC<ContactProps> = ({ initialSelectedMachine }) => {
                   </div>
 
                   <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <Button
-                      onClick={handleWhatsAppFastTrack}
-                      className="bg-green-600 hover:bg-green-700 text-white font-bold gap-2 w-full sm:w-auto"
-                    >
-                      <MessageSquare className="w-4 h-4" /> Open Direct WhatsApp Chat
-                    </Button>
+                    {contact.showPhone ? (
+                      <Button
+                        onClick={handleWhatsAppFastTrack}
+                        className="bg-green-600 hover:bg-green-700 text-white font-bold gap-2 w-full sm:w-auto"
+                      >
+                        <MessageSquare className="w-4 h-4" /> Open Direct WhatsApp Chat
+                      </Button>
+                    ) : (
+                      <a
+                        href={`mailto:${contact.email}?subject=Equipment%20Quote%20Follow-up`}
+                        className="bg-orange hover:bg-orange-hover text-white font-bold px-4 py-2 rounded-md inline-flex items-center gap-2 text-sm w-full sm:w-auto justify-center"
+                      >
+                        <Mail className="w-4 h-4" /> Email Commercial Desk
+                      </a>
+                    )}
                     <Button
                       variant="outline"
                       onClick={resetForm}
@@ -584,6 +518,85 @@ const Contact: React.FC<ContactProps> = ({ initialSelectedMachine }) => {
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Right Column: Direct Contact & Trust Badges */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-sm">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Dispatch & Fleet Yard</h3>
+
+              <div className="space-y-6">
+                {contact.showPhone && (
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-orange/10 rounded-xl text-orange flex-shrink-0">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Direct Dispatch Numbers</h4>
+                    <a
+                      href={`tel:${contact.primaryPhoneRaw}`}
+                      className="text-lg font-bold text-gray-800 hover:text-orange block"
+                    >
+                      {contact.primaryPhone}
+                    </a>
+                    <span className="text-xs text-gray-500">24/7 Breakdown Assistance Hotline</span>
+                  </div>
+                </div>
+              )}
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-blue/10 rounded-xl text-blue flex-shrink-0">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Official Commercial Email</h4>
+                    <a
+                      href={`mailto:${contact.email}`}
+                      className="text-base font-semibold text-gray-800 hover:text-blue block"
+                    >
+                      {contact.email}
+                    </a>
+                    <span className="text-xs text-gray-500">Quotes & Invoicing correspondence</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-green-50 rounded-xl text-green-700 flex-shrink-0">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Main Equipment Yard</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {address.office}
+                    </p>
+                    <span className="text-xs text-gray-500 font-medium">GSTIN: {address.gstin}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-amber-50 rounded-xl text-amber-700 flex-shrink-0">
+                    <Clock className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Working Hours</h4>
+                    <p className="text-sm text-gray-600">{contact.hours}</p>
+                    <p className="text-xs text-green-600 font-semibold">
+                      On-site emergency crew deployed 24/7
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trust Callout */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="flex items-center gap-3 text-xs text-gray-600">
+                  <ShieldCheck className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <span>
+                    All machines deployed with certified test certificates, Form 11, and third-party inspection (TPI).
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

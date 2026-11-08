@@ -1,3 +1,4 @@
+import { company } from '@/data/companyConstants';
 import React, { useEffect, useRef, useState } from 'react';
 import { ShieldCheck, Award, Wrench, Clock, Users, HardHat, CheckCircle2 } from 'lucide-react';
 
@@ -23,10 +24,10 @@ const About = () => {
   }, []);
 
   const stats = [
-    { value: '15+', label: 'Years Serving Maharashtra Industry', icon: Clock },
-    { value: '500+', label: 'Major Infrastructure Projects Completed', icon: Award },
-    { value: '50+', label: 'Heavy Machinery & Cranes in Fleet', icon: HardHat },
-    { value: '99.8%', label: 'Incident-Free Safety Record', icon: ShieldCheck },
+    { value: company.experienceYears, label: 'Years Serving Maharashtra Industry', icon: Clock },
+    { value: company.completedProjects, label: 'Major Infrastructure Projects Completed', icon: Award },
+    { value: company.fleetUnits, label: 'Heavy Machinery & Cranes in Fleet', icon: HardHat },
+    { value: company.tpiCertifiedRate, label: 'Form 11 / TPI Certified Fleet', icon: ShieldCheck },
   ];
 
   const highlights = [

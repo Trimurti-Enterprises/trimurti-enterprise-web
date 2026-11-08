@@ -1,3 +1,4 @@
+import { contact } from '@/data/companyConstants';
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -237,31 +238,31 @@ const Fleet: React.FC<FleetProps> = ({ onSelectMachineForQuote }) => {
         </div>
 
         {/* Capacity Tonnage Quick Filter */}
-        <div className="flex items-center justify-center gap-2 text-xs text-gray-500 mb-10">
-          <span className="font-medium">Filter Tonnage:</span>
+        <div className="text-base text-gray-700 mb-2">Filter Tonnage:</div>
+        <div className="flex items-center justify-start gap-2 text-xs text-gray-500 mb-10">
           <button
             onClick={() => setCapacityFilter('all')}
-            className={`px-2.5 py-1 rounded ${capacityFilter === 'all' ? 'bg-gray-900 text-white font-bold' : 'bg-gray-200 text-gray-700'}`}
+            className={`p-2 rounded self-stretch flex items-center ${capacityFilter === 'all' ? 'bg-gray-900 text-white font-bold' : 'bg-gray-200 text-gray-700'}`}
           >
             All
           </button>
           <button
             onClick={() => setCapacityFilter('under30')}
-            className={`px-2.5 py-1 rounded ${capacityFilter === 'under30' ? 'bg-gray-900 text-white font-bold' : 'bg-gray-200 text-gray-700'}`}
+            className={`p-2 rounded self-stretch flex items-center ${capacityFilter === 'under30' ? 'bg-gray-900 text-white font-bold' : 'bg-gray-200 text-gray-700'}`}
           >
-            ≤ 30 Tonnes
+            upto 30T
           </button>
           <button
             onClick={() => setCapacityFilter('30to100')}
-            className={`px-2.5 py-1 rounded ${capacityFilter === '30to100' ? 'bg-gray-900 text-white font-bold' : 'bg-gray-200 text-gray-700'}`}
+            className={`p-2 rounded self-stretch flex items-center ${capacityFilter === '30to100' ? 'bg-gray-900 text-white font-bold' : 'bg-gray-200 text-gray-700'}`}
           >
-            30T – 100T
+            30T to 100T
           </button>
           <button
             onClick={() => setCapacityFilter('above100')}
-            className={`px-2.5 py-1 rounded ${capacityFilter === 'above100' ? 'bg-gray-900 text-white font-bold' : 'bg-gray-200 text-gray-700'}`}
+            className={`p-2 rounded self-stretch flex items-center ${capacityFilter === 'above100' ? 'bg-gray-900 text-white font-bold' : 'bg-gray-200 text-gray-700'}`}
           >
-            &gt; 100 Tonnes
+            above 100T
           </button>
         </div>
 
@@ -430,7 +431,7 @@ const Fleet: React.FC<FleetProps> = ({ onSelectMachineForQuote }) => {
                       Request Rental Quote
                     </Button>
                     <a
-                      href="tel:+919876543210"
+                      href={`tel:${contact.primaryPhoneRaw}`}
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-gray-900 text-white text-xs font-semibold hover:bg-gray-800"
                     >
                       <Phone className="w-3.5 h-3.5" /> Call Dispatch

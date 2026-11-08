@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, MessageSquare, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, ShieldCheck, Clock } from 'lucide-react';
+import { company, contact, address, branding, navigation } from '@/data/companyConstants';
 
 const Footer = () => {
   const scrollTo = (id: string) => {
@@ -14,13 +15,13 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.png"
-                alt="Trimurti Enterprises"
+                src={branding.logo}
+                alt={company.name}
                 className="h-10 w-auto bg-white p-1 rounded"
               />
             </div>
             <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
-              M/s. Trimurti Enterprises provides heavy crane and construction machinery rental across Maharashtra. Fully certified fleet with experienced operators.
+              {company.legalName} provides heavy crane and construction machinery rental across Maharashtra. Fully certified fleet with experienced operators.
             </p>
             <div className="flex items-center gap-2 text-xs text-green-400 font-semibold">
               <ShieldCheck className="w-4 h-4" /> Form 11 / TPI Certified Equipment
@@ -31,70 +32,74 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-orange mb-4">Quick Navigation</h4>
             <div className="space-y-2 text-xs sm:text-sm text-gray-400">
-              <button onClick={() => scrollTo('home')} className="block hover:text-white transition">
-                Home
-              </button>
-              <button onClick={() => scrollTo('fleet')} className="block hover:text-white transition">
-                Machinery Fleet
-              </button>
-              <button onClick={() => scrollTo('about')} className="block hover:text-white transition">
-                About Company
-              </button>
-              <button onClick={() => scrollTo('projects')} className="block hover:text-white transition">
-                Projects & Track Record
-              </button>
-              <button onClick={() => scrollTo('contact')} className="block hover:text-white transition">
-                Request Quote
-              </button>
+              {navigation.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className="block hover:text-white transition"
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Fleet Categories */}
+          {/* Equipment Categories */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-orange mb-4">Equipment Categories</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-orange mb-4">Equipment Fleet</h4>
             <div className="space-y-2 text-xs sm:text-sm text-gray-400">
-              <span className="block">Pick & Carry Cranes (15T – 23T)</span>
-              <span className="block">Telescopic Cranes (50T – 100T)</span>
-              <span className="block">Crawler Cranes (50T – 250T)</span>
-              <span className="block">Excavators & Earthmovers</span>
-              <span className="block">Aerial Boom & Man Lifts</span>
+              <span className="block">Pick &amp; Carry Cranes (15T – 23T)</span>
+              <span className="block">Hydraulic Telescopic Cranes (50T – 100T)</span>
+              <span className="block">Crawler Lattice Cranes (50T – 250T)</span>
+              <span className="block">Excavators &amp; Heavy Earthmovers</span>
+              <span className="block">Aerial Boom &amp; Scissor Lifts</span>
             </div>
           </div>
 
           {/* Contact Details */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-orange mb-4">Dispatch Contact</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-orange mb-4">Dispatch &amp; Yard</h4>
             <div className="space-y-3 text-xs sm:text-sm text-gray-400">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-orange flex-shrink-0 mt-0.5" />
-                <span>Turbhe MIDC, Navi Mumbai, Maharashtra 400705</span>
+                <span>{address.office}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-orange flex-shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white">+91 98765 43210</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-green-500 flex-shrink-0" />
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener" className="hover:text-green-400">
-                  WhatsApp: +91 98765 43210
-                </a>
-              </div>
+              {contact.showPhone && (
+                <>
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-orange flex-shrink-0" />
+                    <a href={`tel:${contact.primaryPhoneRaw}`} className="hover:text-white font-medium">
+                      {contact.primaryPhone}
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MessageSquare className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <a href={contact.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-green-400">
+                      WhatsApp: {contact.whatsapp}
+                    </a>
+                  </div>
+                </>
+              )}
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-blue flex-shrink-0" />
-                <a href="mailto:info@trimurtienterprises.com" className="hover:text-white">
-                  info@trimurtienterprises.com
+                <a href={`mailto:${contact.email}`} className="hover:text-white">
+                  {contact.email}
                 </a>
               </div>
-              <div className="text-[11px] text-gray-500 pt-1">
-                GSTIN: 27AABCT1234F1Z8
+              <div className="flex items-center gap-2 text-xs text-gray-400">
+                <Clock className="w-3.5 h-3.5 text-orange flex-shrink-0" />
+                <span>{contact.hours}</span>
+              </div>
+              <div className="text-[11px] text-gray-500 pt-1 border-t border-gray-800">
+                GSTIN: <span className="font-mono text-gray-400">{address.gstin}</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-          <p>© {new Date().getFullYear()} Trimurti Enterprises. All rights reserved.</p>
-          <p>Heavy Equipment Rental & Crane Services · Maharashtra, India</p>
+          <p>© {new Date().getFullYear()} {company.name}. All rights reserved.</p>
+          <p>{company.tagline} · {address.state}, {address.country}</p>
         </div>
       </div>
     </footer>
