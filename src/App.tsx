@@ -79,6 +79,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 }
 
+const isInsideIframe = typeof window !== "undefined" && window.self !== window.top;
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -87,7 +89,7 @@ const App = () => (
       <BrowserRouter>
         <ErrorBoundary>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={isInsideIframe ? <SiteView /> : <Index />} />
             <Route path="/site" element={<SiteView />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

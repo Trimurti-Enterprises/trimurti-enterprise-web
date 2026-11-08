@@ -882,6 +882,24 @@ export function createSite(config: Partial<SiteConfig>): string {
   </div>
 
   <script>
+    // Intercept internal anchor links to smoothly scroll within preview iframe
+    document.addEventListener('click', function(e) {
+      var anchor = e.target.closest('a[href^="#"]');
+      if (anchor) {
+        e.preventDefault();
+        var href = anchor.getAttribute('href');
+        var targetId = href.slice(1);
+        if (!targetId || targetId === 'top') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+        var targetElem = document.getElementById(targetId);
+        if (targetElem) {
+          targetElem.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+
     document.querySelectorAll('.machine-inquire-btn').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         var machineName = this.getAttribute('data-machine');

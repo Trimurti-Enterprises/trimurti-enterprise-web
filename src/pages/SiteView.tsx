@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Edit3, Download, ExternalLink } from "lucide-react";
 import { starter, createSite, SiteConfig, STORAGE_KEY } from "./Index";
 
+const isInsideIframe = typeof window !== "undefined" && window.self !== window.top;
+
 const SiteView = () => {
   const [site] = useState<SiteConfig>(() => {
     try {
