@@ -12,6 +12,7 @@ import {
   Globe,
   ImagePlus,
   Layers3,
+  LayoutTemplate,
   Monitor,
   Palette,
   Plus,
