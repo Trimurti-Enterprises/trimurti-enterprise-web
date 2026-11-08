@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowDown,
   ArrowUp,
@@ -8,6 +9,7 @@ import {
   ExternalLink,
   Eye,
   FileJson,
+  Globe,
   ImagePlus,
   Layers3,
   Monitor,
@@ -71,7 +73,7 @@ export type SiteConfig = {
   hours: string;
 };
 
-const defaultMachines: MachineItem[] = [
+export const defaultMachines: MachineItem[] = [
   {
     id: "m1",
     name: "Pick and carry crane",
@@ -104,7 +106,7 @@ const defaultMachines: MachineItem[] = [
   },
 ];
 
-const starter: SiteConfig = {
+export const starter: SiteConfig = {
   business: "Trimurti Enterprises",
   headline: "Heavy Equipment that keeps projects moving.",
   description:
@@ -146,14 +148,14 @@ const starter: SiteConfig = {
   hours: "Mon - Sat: 8:00 AM - 8:00 PM (Emergency Dispatch 24/7)",
 };
 
-const sectionLabels: Record<SectionId, string> = {
+export const sectionLabels: Record<SectionId, string> = {
   about: "About us",
   equipment: "Equipment Fleet",
   projects: "Projects",
   contact: "Contact & Quotes",
 };
 
-const colorPresets = [
+export const colorPresets = [
   { name: "Safety Orange & Blue", accent: "#f48516", secondary: "#1992dc" },
   { name: "Industrial Amber & Slate", accent: "#d97706", secondary: "#475569" },
   { name: "Emerald & Dark Teal", accent: "#16a34a", secondary: "#0f766e" },
@@ -161,7 +163,7 @@ const colorPresets = [
   { name: "Heavy Graphite", accent: "#27272a", secondary: "#52525b" },
 ];
 
-const typographyOptions: { id: TypographyPreset; label: string; fontStack: string }[] = [
+export const typographyOptions: { id: TypographyPreset; label: string; fontStack: string }[] = [
   {
     id: "classic-editorial",
     label: "Classic Editorial",
@@ -179,8 +181,9 @@ const typographyOptions: { id: TypographyPreset; label: string; fontStack: strin
   },
 ];
 
-const escapeHtml = (value: string) =>
-  value.replace(
+export const escapeHtml = (value: unknown): string => {
+  const str = String(value ?? "");
+  return str.replace(
     /[&<>"']/g,
     (char) =>
       ({
@@ -191,29 +194,40 @@ const escapeHtml = (value: string) =>
         "'": "&#39;",
       }[char] ?? char)
   );
+};
 
-const safeColor = (value: string, fallback: string) =>
-  /^#[\da-f]{6}$/i.test(value) ? value : fallback;
+export const safeColor = (value: unknown, fallback: string): string => {
+  const str = String(value ?? "");
+  return /^#[\da-f]{6}$/i.test(str) ? str : fallback;
+};
 
-function createSite(config: SiteConfig): string {
-  const accent = safeColor(config.accent, "#f48516");
-  const secondary = safeColor(config.secondary, "#1992dc");
+export function createSite(config: Partial<SiteConfig>): string {
+  const safeConfig: SiteConfig = {
+    ...starter,
+    ...config,
+    sections: Array.isArray(config.sections) && config.sections.length > 0 ? config.sections : starter.sections,
+    machines: Array.isArray(config.machines) && config.machines.length > 0 ? config.machines : starter.machines,
+    projectTags: Array.isArray(config.projectTags) && config.projectTags.length > 0 ? config.projectTags : starter.projectTags,
+  };
+
+  const accent = safeColor(safeConfig.accent, "#f48516");
+  const secondary = safeColor(safeConfig.secondary, "#1992dc");
   const fontPairing =
-    typographyOptions.find((t) => t.id === config.typography)?.fontStack ||
+    typographyOptions.find((t) => t.id === safeConfig.typography)?.fontStack ||
     "Georgia, 'Times New Roman', serif";
 
-  const nav = config.sections
-    .map((id) => `<a href="#${id}">${sectionLabels[id]}</a>`)
+  const nav = safeConfig.sections
+    .map((id) => `<a href="#${id}">${sectionLabels[id] || id}</a>`)
     .join("");
 
-  const sectionsHtml = config.sections
+  const sectionsHtml = safeConfig.sections
     .map((id) => {
       if (id === "about") {
         return `
         <section id="about" class="story">
           <p class="eyebrow">A little about us</p>
-          <h2>${escapeHtml(config.aboutTitle)}</h2>
-          <p class="section-lead">${escapeHtml(config.aboutText)}</p>
+          <h2>${escapeHtml(safeConfig.aboutTitle)}</h2>
+          <p class="section-lead">${escapeHtml(safeConfig.aboutText)}</p>
           <div class="stats-grid">
             <div class="stat-card"><strong>15+</strong><span>Years Experience</span></div>
             <div class="stat-card"><strong>500+</strong><span>Completed Projects</span></div>
@@ -223,12 +237,12 @@ function createSite(config: SiteConfig): string {
         </section>`;
       }
       if (id === "equipment") {
-        const machineCards = config.machines
+        const machineCards = (safeConfig.machines || [])
           .map(
             (machine) => `
           <article class="machine-card">
             <div class="machine-image-wrap">
-              <img src="${machine.image}" alt="${escapeHtml(machine.name)}" loading="lazy">
+              <img src="${machine.image || '/placeholder.svg'}" alt="${escapeHtml(machine.name)}" loading="lazy">
               <span class="machine-badge">${escapeHtml(machine.capacity)}</span>
             </div>
             <div class="machine-info">
@@ -244,8 +258,8 @@ function createSite(config: SiteConfig): string {
         <section id="equipment" class="equipment">
           <div class="section-header">
             <p class="eyebrow">The fleet</p>
-            <h2>${escapeHtml(config.equipmentTitle)}</h2>
-            <p class="section-lead">${escapeHtml(config.equipmentText)}</p>
+            <h2>${escapeHtml(safeConfig.equipmentTitle)}</h2>
+            <p class="section-lead">${escapeHtml(safeConfig.equipmentText)}</p>
           </div>
           <div class="machine-grid">
             ${machineCards}
@@ -253,22 +267,22 @@ function createSite(config: SiteConfig): string {
         </section>`;
       }
       if (id === "projects") {
-        const tagSpans = config.projectTags
+        const tagSpans = (safeConfig.projectTags || [])
           .map((tag) => `<span class="project-tag">${escapeHtml(tag)}</span>`)
           .join("");
 
         return `
         <section id="projects" class="projects">
           <p class="eyebrow">On site & Track Record</p>
-          <h2>${escapeHtml(config.projectsTitle)}</h2>
-          <p class="section-lead">${escapeHtml(config.projectsText)}</p>
+          <h2>${escapeHtml(safeConfig.projectsTitle)}</h2>
+          <p class="section-lead">${escapeHtml(safeConfig.projectsText)}</p>
           <div class="project-strip">
             ${tagSpans}
           </div>
         </section>`;
       }
       if (id === "contact") {
-        const machineOptions = config.machines
+        const machineOptions = (safeConfig.machines || [])
           .map((m) => `<option value="${escapeHtml(m.name)}">${escapeHtml(m.name)} (${escapeHtml(m.capacity)})</option>`)
           .join("");
 
@@ -276,36 +290,36 @@ function createSite(config: SiteConfig): string {
         <section id="contact" class="contact">
           <div class="contact-details">
             <p class="eyebrow">Start a conversation</p>
-            <h2>${escapeHtml(config.contactTitle)}</h2>
-            <p class="section-lead">${escapeHtml(config.contactText)}</p>
+            <h2>${escapeHtml(safeConfig.contactTitle)}</h2>
+            <p class="section-lead">${escapeHtml(safeConfig.contactText)}</p>
             
             <div class="info-blocks">
               <div class="info-item">
                 <strong>Direct Phone</strong>
-                <a href="tel:${escapeHtml(config.phone.replace(/[^+\d]/g, ""))}" class="contact-link">${escapeHtml(config.phone)}</a>
+                <a href="tel:${escapeHtml(safeConfig.phone.replace(/[^+\d]/g, ""))}" class="contact-link">${escapeHtml(safeConfig.phone)}</a>
               </div>
-              ${config.whatsapp ? `
+              ${safeConfig.whatsapp ? `
               <div class="info-item">
                 <strong>WhatsApp Fast-Track</strong>
-                <a href="https://wa.me/${escapeHtml(config.whatsapp.replace(/\D/g, ""))}?text=${encodeURIComponent("Hello Trimurti Enterprises, I would like to inquire about machinery rental.")}" target="_blank" rel="noopener" class="contact-link whatsapp-link">Chat on WhatsApp ↗</a>
+                <a href="https://wa.me/${escapeHtml(safeConfig.whatsapp.replace(/\D/g, ""))}?text=${encodeURIComponent("Hello Trimurti Enterprises, I would like to inquire about machinery rental.")}" target="_blank" rel="noopener" class="contact-link whatsapp-link">Chat on WhatsApp ↗</a>
               </div>` : ""}
               <div class="info-item">
                 <strong>Email Address</strong>
-                <a href="mailto:${escapeHtml(config.email)}" class="contact-link">${escapeHtml(config.email)}</a>
+                <a href="mailto:${escapeHtml(safeConfig.email)}" class="contact-link">${escapeHtml(safeConfig.email)}</a>
               </div>
               <div class="info-item">
                 <strong>Yard & Office Address</strong>
-                <span>${escapeHtml(config.address)}</span>
+                <span>${escapeHtml(safeConfig.address)}</span>
               </div>
-              ${config.gstin ? `
+              ${safeConfig.gstin ? `
               <div class="info-item">
                 <strong>GSTIN Registration</strong>
-                <span>${escapeHtml(config.gstin)}</span>
+                <span>${escapeHtml(safeConfig.gstin)}</span>
               </div>` : ""}
-              ${config.hours ? `
+              ${safeConfig.hours ? `
               <div class="info-item">
                 <strong>Operating Hours</strong>
-                <span>${escapeHtml(config.hours)}</span>
+                <span>${escapeHtml(safeConfig.hours)}</span>
               </div>` : ""}
             </div>
           </div>
@@ -362,18 +376,18 @@ function createSite(config: SiteConfig): string {
     })
     .join("");
 
-  const logoMarkup = config.logo
-    ? `<img class="logo" src="${config.logo}" alt="${escapeHtml(config.business)}">`
-    : `<span class="wordmark">${escapeHtml(config.business)}</span>`;
+  const logoMarkup = safeConfig.logo
+    ? `<img class="logo" src="${safeConfig.logo}" alt="${escapeHtml(safeConfig.business)}">`
+    : `<span class="wordmark">${escapeHtml(safeConfig.business)}</span>`;
 
-  const heroStyle = config.heroImage
-    ? `background: linear-gradient(90deg, rgba(18,28,27,0.92), rgba(18,28,27,0.35)), url('${config.heroImage}') center 45%/cover;`
+  const heroStyle = safeConfig.heroImage
+    ? `background: linear-gradient(90deg, rgba(18,28,27,0.92), rgba(18,28,27,0.35)), url('${safeConfig.heroImage}') center 45%/cover;`
     : `background: #1e2823;`;
 
   const layoutClass =
-    config.style === "Workshop"
+    safeConfig.style === "Workshop"
       ? "workshop"
-      : config.style === "Modern"
+      : safeConfig.style === "Modern"
       ? "modern"
       : "field-notes";
 
@@ -382,21 +396,21 @@ function createSite(config: SiteConfig): string {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(config.business)} | Heavy Equipment & Crane Rental</title>
-  <meta name="description" content="${escapeHtml(config.description)}">
-  <meta property="og:title" content="${escapeHtml(config.business)}">
-  <meta property="og:description" content="${escapeHtml(config.description)}">
+  <title>${escapeHtml(safeConfig.business)} | Heavy Equipment & Crane Rental</title>
+  <meta name="description" content="${escapeHtml(safeConfig.description)}">
+  <meta property="og:title" content="${escapeHtml(safeConfig.business)}">
+  <meta property="og:description" content="${escapeHtml(safeConfig.description)}">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "${escapeHtml(config.business)}",
-    "description": "${escapeHtml(config.description)}",
-    "telephone": "${escapeHtml(config.phone)}",
-    "email": "${escapeHtml(config.email)}",
+    "name": "${escapeHtml(safeConfig.business)}",
+    "description": "${escapeHtml(safeConfig.description)}",
+    "telephone": "${escapeHtml(safeConfig.phone)}",
+    "email": "${escapeHtml(safeConfig.email)}",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "${escapeHtml(config.address)}"
+      "streetAddress": "${escapeHtml(safeConfig.address)}"
     }
   }
   </script>
@@ -837,7 +851,7 @@ function createSite(config: SiteConfig): string {
     <header class="topbar">
       <a class="brand" href="#top">
         ${logoMarkup}
-        ${config.logo ? `<span>${escapeHtml(config.business)}</span>` : ""}
+        ${safeConfig.logo ? `<span>${escapeHtml(safeConfig.business)}</span>` : ""}
       </a>
       <nav class="nav">
         ${nav}
@@ -847,12 +861,12 @@ function createSite(config: SiteConfig): string {
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">${escapeHtml(config.business)}</p>
-          <h1>${escapeHtml(config.headline)}</h1>
-          <p>${escapeHtml(config.description)}</p>
+          <p class="eyebrow">${escapeHtml(safeConfig.business)}</p>
+          <h1>${escapeHtml(safeConfig.headline)}</h1>
+          <p>${escapeHtml(safeConfig.description)}</p>
           <div class="hero-actions">
-            <a class="cta-btn" href="#contact">${escapeHtml(config.heroCtaText)}</a>
-            <a class="cta-btn alt" href="#equipment">${escapeHtml(config.heroSecondaryCtaText)}</a>
+            <a class="cta-btn" href="#contact">${escapeHtml(safeConfig.heroCtaText)}</a>
+            <a class="cta-btn alt" href="#equipment">${escapeHtml(safeConfig.heroSecondaryCtaText)}</a>
           </div>
         </div>
       </section>
@@ -861,13 +875,12 @@ function createSite(config: SiteConfig): string {
     </main>
 
     <footer class="footer">
-      <div>© ${new Date().getFullYear()} ${escapeHtml(config.business)} · All Rights Reserved.</div>
-      <div>${escapeHtml(config.phone)} · ${escapeHtml(config.email)}</div>
+      <div>© ${new Date().getFullYear()} ${escapeHtml(safeConfig.business)} · All Rights Reserved.</div>
+      <div>${escapeHtml(safeConfig.phone)} · ${escapeHtml(safeConfig.email)}</div>
     </footer>
   </div>
 
   <script>
-    // Quick machine pre-select
     document.querySelectorAll('.machine-inquire-btn').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         var machineName = this.getAttribute('data-machine');
@@ -878,7 +891,6 @@ function createSite(config: SiteConfig): string {
       });
     });
 
-    // Inquiry form submission
     var form = document.getElementById('inquiry-form');
     if (form) {
       form.addEventListener('submit', function(e) {
@@ -908,19 +920,18 @@ function createSite(config: SiteConfig): string {
           'Requirements:\\n' + message
         );
 
-        // If WhatsApp number is available, user can also initiate chat
         ${
-          config.whatsapp
+          safeConfig.whatsapp
             ? `
-        var waPhone = "${escapeHtml(config.whatsapp.replace(/\D/g, ""))}";
+        var waPhone = "${escapeHtml(safeConfig.whatsapp.replace(/\D/g, ""))}";
         if (confirm("Quote recorded! Would you also like to open WhatsApp to chat with our fleet dispatch directly?")) {
           window.open("https://wa.me/" + waPhone + "?text=" + body, "_blank");
         } else {
-          location.href = "mailto:${escapeHtml(config.email)}?subject=" + subject + "&body=" + body;
+          location.href = "mailto:${escapeHtml(safeConfig.email)}?subject=" + subject + "&body=" + body;
         }
         `
             : `
-        location.href = "mailto:${escapeHtml(config.email)}?subject=" + subject + "&body=" + body;
+        location.href = "mailto:${escapeHtml(safeConfig.email)}?subject=" + subject + "&body=" + body;
         `
         }
       });
@@ -930,20 +941,26 @@ function createSite(config: SiteConfig): string {
 </html>`;
 }
 
-const fieldClass = "mt-1.5 border-[#dce2dc] bg-white text-sm focus-visible:ring-[#1992dc]";
+export const fieldClass = "mt-1.5 border-[#dce2dc] bg-white text-sm focus-visible:ring-[#1992dc]";
 
-const STORAGE_KEY = "trimurti_site_builder_state_v1";
+export const STORAGE_KEY = "trimurti_site_builder_state_v2";
 
 const Index = () => {
   const { toast } = useToast();
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const jsonInputRef = useRef<HTMLInputElement>(null);
 
   const [site, setSite] = useState<SiteConfig>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        return { ...starter, ...JSON.parse(saved) };
+        const parsed = JSON.parse(saved);
+        return {
+          ...starter,
+          ...parsed,
+          machines: Array.isArray(parsed.machines) && parsed.machines.length > 0 ? parsed.machines : starter.machines,
+          projectTags: Array.isArray(parsed.projectTags) && parsed.projectTags.length > 0 ? parsed.projectTags : starter.projectTags,
+          sections: Array.isArray(parsed.sections) && parsed.sections.length > 0 ? parsed.sections : starter.sections,
+        };
       }
     } catch {
       // ignore
@@ -1066,7 +1083,7 @@ const Index = () => {
         [
           site.logo,
           site.heroImage,
-          ...site.machines.map((machine) => machine.image),
+          ...(site.machines || []).map((machine) => machine.image),
         ].filter((path) => path && path.startsWith("/"))
       ),
     ];
@@ -1147,7 +1164,13 @@ const Index = () => {
     reader.onload = () => {
       try {
         const parsed = JSON.parse(String(reader.result));
-        setSite({ ...starter, ...parsed });
+        setSite({
+          ...starter,
+          ...parsed,
+          machines: Array.isArray(parsed.machines) && parsed.machines.length > 0 ? parsed.machines : starter.machines,
+          projectTags: Array.isArray(parsed.projectTags) && parsed.projectTags.length > 0 ? parsed.projectTags : starter.projectTags,
+          sections: Array.isArray(parsed.sections) && parsed.sections.length > 0 ? parsed.sections : starter.sections,
+        });
         toast({
           title: "Config Imported!",
           description: "Successfully loaded saved site configuration.",
@@ -1194,11 +1217,25 @@ const Index = () => {
             <small>Business Site Studio · Trimurti Enterprises</small>
           </span>
         </a>
+        
         <div className="topbar-center">
           <span className="status-dot" />
           Draft auto-saved locally
         </div>
-        <div className="topbar-actions">
+
+        <div className="topbar-actions flex items-center gap-2">
+          {/* Direct Link to View Full Built Site */}
+          <Link to="/site">
+            <Button
+              size="sm"
+              variant="outline"
+              className="text-xs font-semibold gap-1.5 border-orange/40 text-orange hover:bg-orange/10"
+              title="Open full page view of the generated site"
+            >
+              <Globe size={14} /> View Full Site (/site)
+            </Button>
+          </Link>
+
           <Button
             variant="outline"
             size="sm"
@@ -1207,6 +1244,7 @@ const Index = () => {
           >
             <RotateCcw size={14} className="mr-1" /> Reset
           </Button>
+
           <Button
             size="sm"
             className="download-button"
@@ -1225,7 +1263,7 @@ const Index = () => {
             Craft a portal that fits <em>your heavy equipment business.</em>
           </h1>
           <p className="heading-copy">
-            Configure identity, fleet machinery, project credentials, and export a 100% portable HTML file.
+            Configure identity, fleet machinery, project credentials, and export a 100% portable HTML file. Or preview the live site directly at <Link to="/site" className="text-orange font-bold hover:underline">/site</Link>.
           </p>
         </div>
         <div className="heading-count">
@@ -1456,7 +1494,7 @@ const Index = () => {
                             checked={site.sections.includes(id)}
                             onCheckedChange={() => toggleSection(id)}
                           />
-                          <span>{sectionLabels[id]}</span>
+                          <span>{sectionLabels[id] || id}</span>
                         </label>
                         <div className="flex items-center gap-1">
                           <Button
@@ -1519,7 +1557,7 @@ const Index = () => {
 
                           <div className="flex items-center justify-between pt-1">
                             <span className="text-[11px] font-bold text-gray-700">
-                              Fleet Machines ({site.machines.length})
+                              Fleet Machines ({(site.machines || []).length})
                             </span>
                             <Button
                               size="sm"
@@ -1532,7 +1570,7 @@ const Index = () => {
                           </div>
 
                           <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
-                            {site.machines.map((machine) => (
+                            {(site.machines || []).map((machine) => (
                               <div
                                 key={machine.id}
                                 className="p-2 border rounded bg-gray-50 text-xs space-y-1.5"
@@ -1608,7 +1646,7 @@ const Index = () => {
                               Sector & Capability Tags
                             </span>
                             <div className="flex flex-wrap gap-1 mb-2">
-                              {site.projectTags.map((tag) => (
+                              {(site.projectTags || []).map((tag) => (
                                 <span
                                   key={tag}
                                   className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gray-200 text-[11px]"
