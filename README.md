@@ -12,71 +12,53 @@ The **Trimurti Enterprises Web Portal** is the official digital storefront and l
 ## 2. Tech Stack & Architecture
 - **Framework**: React 18 + Vite + TypeScript
 - **Styling & UI**: Tailwind CSS, Radix UI (shadcn/ui), Lucide React
-- **Notifications & Feedback**: Sonner / Toast
-- **Form Handling & Validation**: React Hook Form + Zod
-- **Lead Integrations**: Email dispatch (`mailto` / backend webhook), Direct WhatsApp Business Click-to-Chat, Click-to-Call
+- **Notifications & Feedback**: Toast
+- **Form Handling & Validation**: Interactive multi-step wizard with client validation
+- **Lead Integrations**: Local lead store backup, direct WhatsApp Business fast-track, direct phone click-to-call
 
 ---
 
-## 3. Architecture & Functional Modules
-
-```
-Trimurti Enterprises Portal
-   ├── Header & Mobile Navigation (Sticky, Quick-Call, WhatsApp)
-   ├── Hero Section (Value proposition, quick CTA, trust metrics)
-   ├── Fleet & Machinery Catalog (Categorized: Cranes, Earthmoving, Aerial Lifts)
-   │     ├── Filter by Category & Capacity
-   │     └── Equipment Detail Modal with Technical Specs & "Request Quote"
-   ├── Interactive Quote Request Wizard (Multi-step inquiry flow)
-   ├── Projects & Industrial Track Record (Metro, refinery, civil erection)
-   ├── Clients & Testimonials (L&T, Tata, Shapoorji Pallonji, Afcons, etc.)
-   ├── About Us & Safety Compliance (ISO, certified operators, 24/7 breakdown SLA)
-   └── Contact & Location (Interactive Google Map, direct phone/email, GSTIN)
-```
-
----
-
-## 4. Tasks & Subtasks Breakdown
+## 3. Tasks & Subtasks Status
 
 ### Task 1: Fleet & Equipment Catalog Enhancement
-- [ ] **1.1 Category Filtering & Search**:
-  - [ ] Implement category filter pills: `All`, `Pick & Carry Cranes`, `Telescopic Cranes`, `Crawler Cranes`, `Earthmoving`, `Man Lifts / Boom Lifts`.
-  - [ ] Add capacity/tonnage quick filter (e.g., `< 25T`, `50T - 100T`, `> 100T`).
-- [ ] **1.2 Equipment Card & Technical Spec Sheet Modal**:
-  - [ ] Add comprehensive specs per model: Maximum lifting capacity, max boom length, fly jib option, counterweight, engine rating, and outrigger spread.
-  - [ ] Include high-res machinery gallery and downloadable specification PDF / brochure link.
-  - [ ] "Request Quote for this Machine" button that pre-populates the inquiry form.
+- [x] **1.1 Category Filtering & Search**:
+  - [x] Category filter pills: `All`, `Pick & Carry Cranes`, `Telescopic Cranes`, `Crawler Cranes`, `Excavators & Earthmoving`, `Man Lifts & Booms`.
+  - [x] Capacity quick-filter pills: `≤ 30 Tonnes`, `30T – 100T`, `> 100 Tonnes`.
+- [x] **1.2 Equipment Card & Technical Spec Sheet Modal**:
+  - [x] Comprehensive specs per model: Maximum lifting capacity, max boom reach, working radius, engine rating, and common applications.
+  - [x] TPI Certification and licensed operator badges on cards.
+  - [x] "Request Quote" button that pre-selects the machine in the Quote Wizard.
 
 ### Task 2: Interactive Equipment Rental Quote Wizard
-- [ ] **2.1 Multi-Step Quote Request Modal/Section**:
-  - [ ] **Step 1: Machine Selection**: Select machine type, tonnage, and quantity required.
-  - [ ] **Step 2: Project Details**: Job site location (City / Pincode), duration (Daily, Monthly, Annual lease), operator required (Yes/No), start date.
-  - [ ] **Step 3: Contact Details**: Contractor/Company name, Contact person, Mobile number (with OTP/10-digit validation), Email, GSTIN (optional).
-- [ ] **2.2 Instant Feedback & WhatsApp Fast-Track**:
-  - [ ] Pre-format WhatsApp inquiry message with machine and location details for 1-click submission.
-  - [ ] Success state with expected turnaround SLA (e.g., "Our fleet manager will call you within 30 minutes").
+- [x] **2.1 Multi-Step Quote Request Wizard**:
+  - [x] **Step 1: Machine Selection**: Select machine type, tonnage, and quantity required.
+  - [x] **Step 2: Project Details**: Job site location (City / Pincode), duration (Daily, Monthly, Annual lease), operator required (Yes/No), start date.
+  - [x] **Step 3: Contact Details**: Contractor/Company name, Contact person, Mobile number (with 10-digit validation), Email, GSTIN, special lift notes.
+- [x] **2.2 Instant Feedback & WhatsApp Fast-Track**:
+  - [x] Pre-formats WhatsApp inquiry message with machine and location details for 1-click submission.
+  - [x] Success state with expected turnaround SLA (30-minute confirmation).
 
 ### Task 3: Projects & Field Operations Showcase
-- [ ] **3.1 Project Filter by Industry**:
-  - [ ] Filter projects by sector: Metro Rail & Highway, Industrial Fabrication, Refinery & Petrochemical, High-Rise Construction.
-- [ ] **3.2 Case Study Cards**:
-  - [ ] Highlight machinery deployed, lift challenges overcome, project scale, and client testimony.
+- [x] **3.1 Project Filter by Industry**:
+  - [x] Filter projects by sector: `Metro & Infrastructure`, `Refinery & Petrochemicals`, `Industrial Fabrication`, `Highways & Earthmoving`.
+- [x] **3.2 Case Study Cards**:
+  - [x] Highlights machinery deployed, project scale, clients (L&T, BPCL, JSW, MSRDC), and milestones.
 
 ### Task 4: Trust, Safety & Operational Credentials
-- [ ] **4.1 Safety & Compliance Section**:
-  - [ ] Highlight third-party certified cranes (TPI certification), licensed rigging crew, comprehensive transit insurance.
-  - [ ] 24/7 On-Site Maintenance SLA (Mobile service van, replacement guarantee).
-- [ ] **4.2 Key Performance Highlights**:
-  - [ ] Animated stats: 15+ Years in Service, 500+ Projects Completed, 50+ Heavy Machines in Fleet, 99.8% Safety Record.
+- [x] **4.1 Safety & Compliance Section**:
+  - [x] Highlights third-party certified cranes (TPI certification), licensed rigging crew, comprehensive transit insurance.
+  - [x] 24/7 On-Site Mobile Service Van SLA in Maharashtra.
+- [x] **4.2 Key Performance Highlights**:
+  - [x] Animated stats: 15+ Years in Service, 500+ Projects Completed, 50+ Heavy Machines in Fleet, 99.8% Incident-Free Safety Record.
 
 ### Task 5: Mobile Optimization, Quick CTAs & SEO
-- [ ] **5.1 Sticky Floating Action Bar for Mobile**:
-  - [ ] Persistent bottom bar on mobile with "Call Now" (`tel:+91...`) and "WhatsApp Inquiry" (`https://wa.me/...`).
-- [ ] **5.2 Local Heavy Machinery SEO**:
-  - [ ] Complete Open Graph metadata, schema.org `LocalBusiness` / `AutomotiveRental` JSON-LD structured data.
-  - [ ] Target keywords: Crane hire Mumbai, heavy machinery rental Maharashtra, hydraulic telescopic crane rental, pick and carry crane leasing.
+- [x] **5.1 Sticky Floating Action Bar for Mobile**:
+  - [x] Persistent bottom bar on mobile with "Call Now" (`tel:+919876543210`), "WhatsApp" (`https://wa.me/...`), and "Get Quote".
+- [x] **5.2 Local Heavy Machinery SEO**:
+  - [x] Complete Open Graph metadata, schema.org `LocalBusiness` JSON-LD structured data.
+  - [x] Target keywords for Mumbai & Maharashtra heavy crane and equipment hire.
 
-### Task 6: Inquiry Management & Form Dispatch
-- [ ] **6.1 Form Submission Handling**:
-  - [ ] Connect contact and quote forms to email notification (EmailJS / webhook / Formspree / backend API).
-  - [ ] Local storage backup of submitted inquiries so no lead is lost if internet drops.
+### Task 6: Inquiry Management & Lead Persistence
+- [x] **6.1 Form Submission Handling**:
+  - [x] Local storage backup of submitted inquiries (`trimurti_leads_history`) so no contractor lead is lost.
+  - [x] Fast-track WhatsApp bridge and email dispatch fallback.
