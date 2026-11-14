@@ -325,7 +325,7 @@ const Fleet: React.FC<FleetProps> = ({ onSelectMachineForQuote }) => {
                     className="flex-1 text-xs bg-orange hover:bg-orange-hover text-white font-semibold"
                     onClick={() => handleInquireFromModal(item.name)}
                   >
-                    Get Quote ↗
+                    Get Quote
                   </Button>
                 </div>
               </div>

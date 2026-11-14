@@ -49,7 +49,7 @@ const Header = () => {
             ))}
           </div>
           
-          <div className="flex flex-col items-end text-sm text-gray-600">
+          <div className="flex flex-col items-end text-sm text-gray-600 gap-1">
             <a 
               href={`mailto:${contact.email}`} 
               className="flex items-center gap-1.5 mb-1 hover:text-orange transition"
