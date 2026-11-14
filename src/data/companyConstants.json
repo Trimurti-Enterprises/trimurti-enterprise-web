@@ -43,8 +43,8 @@
     "pan": "AABCT1234F"
   },
   "branding": {
-    "logo": "/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.png",
-    "logoDark": "/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.png",
+    "logo": "/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.webp",
+    "logoDark": "/lovable-uploads/128b9340-0c29-4df1-80d0-dadb4dc2b0b9.webp",
     "favicon": "/favicon.ico"
   },
   "certifications": [
@@ -71,7 +71,7 @@
       "name": "Larsen & Toubro (L&T)",
       "variations": "L&T Construction, Larsen & Toubro",
       "category": "EPC & Infrastructure",
-      "logo": "/logos/clients/landt-construction-logo.png",
+      "logo": "/logos/clients/landt-construction-logo.webp",
       "alt": "Larsen & Toubro Construction Logo",
       "scope": "Metro rail girder lifting, bridge segment erection, highway interchanges"
     },
@@ -89,7 +89,7 @@
       "name": "Tata Projects",
       "variations": "TATA Projects",
       "category": "Urban & Industrial Infrastructure",
-      "logo": "/logos/clients/tata-proj-id5eNgXY43_logos.jpeg",
+      "logo": "/logos/clients/tata-proj-id5eNgXY43_logos.webp",
       "alt": "Tata Projects Logo",
       "scope": "Power plant equipment erection, transmission lines, metro stations"
     },
@@ -116,7 +116,7 @@
       "name": "Afcons Infrastructure",
       "variations": "AFCONS Infra, Afcons Infrastructure",
       "category": "Marine & Underground Transit",
-      "logo": "/logos/clients/Afcons-Logo-Rounded.png",
+      "logo": "/logos/clients/Afcons-Logo-Rounded.webp",
       "alt": "Afcons Infrastructure Logo",
       "scope": "Coastal road segments, marine jetty piling, heavy flyover pier caps"
     },
@@ -125,7 +125,7 @@
       "name": "JSW Severfield Structures (JSSL)",
       "variations": "JSSL Structures, JSSL Steel Structures",
       "category": "Structural Steel Fabrication",
-      "logo": "/logos/clients/jssl-logo.png",
+      "logo": "/logos/clients/jssl-logo.webp",
       "alt": "JSW Severfield Structures Logo",
       "scope": "Heavy structural steel truss installation, airport terminal framing"
     },
@@ -134,7 +134,7 @@
       "name": "Reliance Industries",
       "variations": "Reliance Infra, Reliance Industries",
       "category": "Refineries & Petrochemicals",
-      "logo": "/logos/clients/Reliance-Industries-Ltd.-Logo-500x281.png",
+      "logo": "/logos/clients/Reliance-Industries-Ltd.-Logo-500x281.webp",
       "alt": "Reliance Industries Limited Logo",
       "scope": "Refinery turnaround crane deployment, heavy heat exchanger replacements"
     }

@@ -39,7 +39,7 @@ const equipmentCatalog: EquipmentModel[] = [
     capacityNum: 23,
     description:
       'Articulated heavy mobile crane with tight turning radius. Ideal for material handling and structural positioning in compact site conditions.',
-    image: '/lovable-uploads/582481b6-7488-47d8-ba5c-0d01d2bd2eaf.png',
+    image: '/lovable-uploads/582481b6-7488-47d8-ba5c-0d01d2bd2eaf.webp',
     brand: 'Escorts / ACE',
     boomLength: '18.5m (4-Section Slotted Boom)',
     workingRadius: 'Up to 15m',
@@ -61,7 +61,7 @@ const equipmentCatalog: EquipmentModel[] = [
     capacityNum: 100,
     description:
       'High-reach hydraulic telescopic crane with multi-axle carrier. Delivers swift highway travel, rapid outrigger setup, and heavy lift capacity.',
-    image: '/lovable-uploads/7c9a592a-27ec-4f4d-8eea-3c09e8c4c7bb.png',
+    image: '/lovable-uploads/7c9a592a-27ec-4f4d-8eea-3c09e8c4c7bb.webp',
     brand: 'Liebherr / Grove / Sany',
     boomLength: '40m – 52m Telescopic + 16m Lattice Jib',
     workingRadius: 'Up to 48m',
@@ -83,7 +83,7 @@ const equipmentCatalog: EquipmentModel[] = [
     capacityNum: 250,
     description:
       'Ultra-stable heavy lifting crawler crane with lattice boom. Capable of 100% rated pick-and-carry travel across unpaved and soft construction soils.',
-    image: '/lovable-uploads/f2480aab-4988-4b4e-bd2f-91ae71f151dd.png',
+    image: '/lovable-uploads/f2480aab-4988-4b4e-bd2f-91ae71f151dd.webp',
     brand: 'Kobelco / Manitowoc / Sany',
     boomLength: 'Lattice Boom up to 82m + Fixed Jib',
     workingRadius: 'Up to 60m',
@@ -105,7 +105,7 @@ const equipmentCatalog: EquipmentModel[] = [
     capacityNum: 30,
     description:
       'High-production track excavators equipped with heavy-duty rock buckets. Engineered for deep excavation, rock breaking, and site mass leveling.',
-    image: '/lovable-uploads/36d1f002-692c-4286-80eb-add1f0b3b1bc.png',
+    image: '/lovable-uploads/36d1f002-692c-4286-80eb-add1f0b3b1bc.webp',
     brand: 'Tata Hitachi / L&T Komatsu',
     boomLength: '6.6m – 7.3m Digging Depth',
     workingRadius: '9.9m Max Reach at Ground Level',
@@ -127,7 +127,7 @@ const equipmentCatalog: EquipmentModel[] = [
     capacityNum: 10,
     description:
       'Multi-purpose earthmoving workhorse combining front loader bucket with a heavy hydraulic rear digging arm for high agility on construction sites.',
-    image: '/lovable-uploads/59f35e5b-3680-4091-a3f3-0f088e85526a.png',
+    image: '/lovable-uploads/59f35e5b-3680-4091-a3f3-0f088e85526a.webp',
     brand: 'JCB India',
     boomLength: '4.77m Max Digging Depth',
     workingRadius: '5.4m Reach from Slew Centre',
@@ -149,7 +149,7 @@ const equipmentCatalog: EquipmentModel[] = [
     capacityNum: 15,
     description:
       'Self-propelled aerial work platforms with safe 4WD rough-terrain capability. Designed for elevated structural inspection, welding, and painting.',
-    image: '/lovable-uploads/f2480aab-4988-4b4e-bd2f-91ae71f151dd.png',
+    image: '/lovable-uploads/f2480aab-4988-4b4e-bd2f-91ae71f151dd.webp',
     brand: 'JLG Industries',
     boomLength: 'Platform Height 24.4m to 45.7m (80–150 Ft)',
     workingRadius: 'Horizontal Outreach up to 23m',
