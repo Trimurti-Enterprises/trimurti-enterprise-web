@@ -31,7 +31,7 @@ const projectsData: ProjectItem[] = [
     equipmentUsed: '250T Hydraulic Crawler & 100T Telescopic Cranes',
     description:
       'Tandem lifting and precision placement of precast U-girders and pier caps in active urban traffic corridors with night shift execution.',
-    image: '/lovable-uploads/7c9a592a-27ec-4f4d-8eea-3c09e8c4c7bb.png',
+    image: '/lovable-uploads/7c9a592a-27ec-4f4d-8eea-3c09e8c4c7bb.webp',
     highlight: 'Zero downtime across 45 night lifting shifts',
   },
   {
@@ -43,7 +43,7 @@ const projectsData: ProjectItem[] = [
     equipmentUsed: '150T Crawler Crane + 50T Telescopic Tail Crane',
     description:
       'Turnaround maintenance lift of high-pressure distillation column under strict hazardous area safety protocols and non-sparking rigging.',
-    image: '/lovable-uploads/f2480aab-4988-4b4e-bd2f-91ae71f151dd.png',
+    image: '/lovable-uploads/f2480aab-4988-4b4e-bd2f-91ae71f151dd.webp',
     highlight: 'Executed within tight 72-hour turnaround window',
   },
   {
@@ -55,7 +55,7 @@ const projectsData: ProjectItem[] = [
     equipmentUsed: '23T Pick & Carry Cranes & 80T Telescopic Cranes',
     description:
       'Rapid material sorting, heavy truss offloading, and structural steel erection for 12,000 sq. meter heavy manufacturing bay.',
-    image: '/lovable-uploads/582481b6-7488-47d8-ba5c-0d01d2bd2eaf.png',
+    image: '/lovable-uploads/582481b6-7488-47d8-ba5c-0d01d2bd2eaf.webp',
     highlight: 'Over 1,800 MT of structural steel erected safely',
   },
   {
@@ -67,7 +67,7 @@ const projectsData: ProjectItem[] = [
     equipmentUsed: 'Tata 200 & Komatsu PC300 Excavators, JCB 3DX Loaders',
     description:
       'Mass rock cutting, embankment hill slope cutting, and culvert excavation with continuous fleet deployment over 8 months.',
-    image: '/lovable-uploads/36d1f002-692c-4286-80eb-add1f0b3b1bc.png',
+    image: '/lovable-uploads/36d1f002-692c-4286-80eb-add1f0b3b1bc.webp',
     highlight: 'Over 350,000 cu. meters of earth & hard strata cleared',
   },
 ];
