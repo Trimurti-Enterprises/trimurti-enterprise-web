@@ -74,14 +74,12 @@ export interface CompanyConstants {
 /**
  * Server-side / Build-time feature flag to hide mobile numbers site-wide.
  * Evaluates:
- * 1. Vite build-time env variable: VITE_HIDE_PHONE_NUMBER=true (or 1)
- * 2. Vite build-time env variable: VITE_SHOW_PHONE=false
- * 3. companyConstants.json -> "features": { "hidePhoneNumber": true }
+ * 1. Vite build-time env variable: VITE_SHOULD_HIDE_PHONE_NUMBER=true (or 1)
+ * 2. companyConstants.json -> "features": { "hidePhoneNumber": true }
  */
 export const isPhoneHidden: boolean =
-  import.meta.env.VITE_HIDE_PHONE_NUMBER === "true" ||
-  import.meta.env.VITE_HIDE_PHONE_NUMBER === "1" ||
-  import.meta.env.VITE_SHOW_PHONE === "false" ||
+  import.meta.env.VITE_SHOULD_HIDE_PHONE_NUMBER === "true" ||
+  import.meta.env.VITE_SHOULD_HIDE_PHONE_NUMBER === "1" ||
   Boolean(companyData.features?.hidePhoneNumber);
 
 const sanitizedContact: ContactInfo = {
